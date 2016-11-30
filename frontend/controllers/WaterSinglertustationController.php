@@ -2,12 +2,12 @@
 
 //namespace app\controllers;
 
-namespace res\waterMonitor\frontend\controllers;
+namespace res\waterMonitors\frontend\controllers;
 
 use Yii;
 //use app\models\WaterSinglertustation;
-use res\waterMonitor\common\models\WaterSinglertustation;
-use res\waterMonitor\common\models\Waterstation;
+use res\waterMonitors\common\models\WaterSinglertustation;
+use res\waterMonitors\common\models\Waterstation;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -133,13 +133,23 @@ public function actionSelectrtu($id)
           else
              $rtuname = 'rtu_'.$id;
 
-           $dataProvider = new ActiveDataProvider([
-            'query' =>WaterSinglertustation::findx($rtuname), 
+           $page =  Yii::$app->request->get('page');
+           echo $page;          
+
+            $dataProvider = new ActiveDataProvider([
+            'query' =>WaterSinglertustation::findx($rtuname)->where(['<>','dgtype','5']), 
+       //     'pagination' =>[
+       //         'page' =>$page
+       //       ] 
            ]);
+            //echo $currentPage;
+       //$mypage = Yii::$app->request->url;
+           
           return $this->render('selectrtu',[
                         'dataProvider' => $dataProvider,
                         'data' =>$data,
                         'rtutablename' =>$id,
+                        'page'=>$page,
                   ]);
            
    }
@@ -150,19 +160,34 @@ public function actionSelectrtu($id)
         else
            $rtuname = 'rtu_'.$id;
 
+        //$mypage = $_GET['page'];
+       //$mypage = Yii::$app->request->url;
+       //echo $mypage;  
 
         $dataProvider = new ActiveDataProvider([
           //  'query' => WaterSinglertustation::find(),
-            'query' => WaterSinglertustation::findx($rtuname),
+            'query' => WaterSinglertustation::findx($rtuname)->where(['<>','dgtype','5']),
         ]);
-         // echo "aadfeeew";
-     //   $id =2;
-     //   $model = $this->findModel($id);
+
+    //   $page =$dataProvider->pagination;
+    //   echo var_dump($page);
+   
+          $page = Yii::$app->request->getUrl();
+        //  echo var_dump($page);      
+ //   $searchModel = new WaterMonitorSearch();
+ //   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+ //   $dataProvider->pagination->pageParam = 'page';
+ //   $dataProvider->pagination->pageSizeParam = 'rows';
+            
+             // echo "aadfeeew";
+             //   $id =2;
+             //   $model = $this->findModel($id);
              // return $this->redirect(['view','id' =>$model->id]);
              // return $this->redirect(['info']);
              // return $this->redirect(['index']);
              // return $this->redirect(['alldataanalysishtml.html']);
-       //return $this->render('alldataanalysis'); //, ['model' => $model,]);
+             //return $this->render('alldataanalysis'); //, ['model' => $model,]);
        return $this->render('alldataanalysis', [
                     'dataProvider' => $dataProvider,]);
                      // exit ;

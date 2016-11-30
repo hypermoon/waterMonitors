@@ -2,7 +2,7 @@
 
 //namespace app\models;
 
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
@@ -70,15 +70,15 @@ class WaterSinglertustation extends \frontend\core\BaseActiveRecord
             'id' => 'ID',
             'state' => Yii::t('app', '站点'),
              // 'state' => '站点',
-            'statno' => '站点编号',
+            'statno' => 'RTU编号',
            // 'waterlv' => '水位',
             'waterlv' =>Yii::t('app','水位'),  // '水位',
-            'rainfall' => '24小时雨量',
+            'rainfall' => '最近5分钟雨量',
             'watertemp' => '水温',
             'date' => '记录时间',
             'bakup1' => 'Bakup1',
             'bakup2' => 'Bakup2',
-            'rainfallmulti' =>'rainfallmulti',
+            'rainfallmulti' =>'24小时雨量',
             'waterlvmulti' => 'waterlvmulti',
             'waterflow' => '流量',
             'volte' => '电压',   

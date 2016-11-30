@@ -1,6 +1,6 @@
 <?php
 
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 
 use Yii;
 
@@ -48,7 +48,7 @@ class WaterMonitor extends \frontend\core\BaseActiveRecord
             'site' => Yii::t('app', '站点'),
             'individual_monitoring' => Yii::t('app', '监测人'),
             'phone' => Yii::t('app', '联系电话'),
-            'current_site' => Yii::t('app', '站点编号 ' ),  // '当前站点'),
+            'current_site' => Yii::t('app', 'RTU编号 ' ),  // '当前站点'),
             'current_level' => Yii::t('app', '当前水位'),
             'current_temp' => Yii::t('app', '当前水温'),
             'rainfall' => Yii::t('app', '24小时雨量'),

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::endForm();  ?> 
         <?=Html::a('更新RTU数据',['updatertu','id'=>$rtutablename],['class' =>'btn btn-success']) ?>
         <div style="text-align:center">
-        <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename,'page' =>$page], ['class' => 'btn btn-success']) ?>
         </div> 
    </p>
   
@@ -45,8 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'statno',
             'waterlv',
             'rainfall',
+             'rainfallmulti',
             'waterflow',
-            //'watertemp',
+            'watertemp',
             'volte',
             'date',
             // 'bakup1',

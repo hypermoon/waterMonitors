@@ -1,7 +1,7 @@
 <?php
 
 //namespace app\models;
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 use Yii;
 
 /**
@@ -46,9 +46,9 @@ class Waterstation extends \frontend\core\BaseActiveRecord
         return [
             'sitenumber' => 'RTU编号',
             'stationame' => '站点名称',
-            'fatherpoint' => '上级节点',
+            'fatherpoint' => '手机号',
             'desciber' => '描述',
-            'bakup' => '备份',
+            'bakup' => '联系人',
         ];
     }
 }

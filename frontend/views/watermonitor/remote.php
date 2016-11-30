@@ -76,7 +76,7 @@ $vals = '0';
        <div>  
            <div id="tt1">  
            <?php  echo '系统时间:';  // echo $this->render('_search', ['model' => $searchModel]); ?>
-           <?php echo date('y-m-d h:i:s',time())  ?>
+           <?php echo date('y-m-d H:i:s',time())  ?>
            <br/>
   <!--         <input name="open_date" id="y_open" style="width:190px;" type="text" onclick="javascript:showTime()" value="点击更新时间" readonly="true" >
       -->

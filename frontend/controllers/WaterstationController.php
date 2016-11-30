@@ -2,14 +2,14 @@
 
 //namespace app\controllers;
 
-namespace res\waterMonitor\frontend\controllers;
+namespace res\waterMonitors\frontend\controllers;
 
 //use Yii;
 //use app\models\WaterSinglertustation;
 //use res\waterMonitor\common\models\WaterSinglertustation;
 
 use Yii;
-use res\waterMonitor\common\models\Waterstation;
+use res\waterMonitors\common\models\Waterstation;
 //use app\models\Waterstation;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;

@@ -1,19 +1,18 @@
 <?php
 
-namespace res\waterMonitors\frontend\controllers;
+namespace res\waterMonitor\frontend\controllers;
 
 use Yii;
-use res\waterMonitors\common\models\WaterSinglertustation;
-use res\waterMonitors\common\models\WaterMonitor;
-use res\waterMonitors\common\models\Waterstation;
-use res\waterMonitors\common\models\search\WaterMonitor as WaterMonitorSearch;
+use res\waterMonitor\common\models\WaterSinglertustation;
+use res\waterMonitor\common\models\WaterMonitor;
+use res\waterMonitor\common\models\Waterstation;
+use res\waterMonitor\common\models\search\WaterMonitor as WaterMonitorSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 
-date_default_timezone_set('prc');
 
 /**
  * WatermonitorController implements the CRUD actions for WaterMonitor model.
@@ -87,13 +86,14 @@ class WatermonitorController extends Controller
 
 
 
-         foreach($newdata as $key =>$siteno)
-         {
-                //echo $siteno['sitenumber'];
-                $varname =  $siteno['sitenumber'];
-                $rtuname = 'rtu_'.$varname;
+    foreach($newdata as $key =>$siteno)
+  {
+   //     echo $siteno['sitenumber'];
+        $varname =  $siteno['sitenumber'];
+       
+        $rtuname = 'rtu_'.$varname;
         
-                Yii::$app->db->createCommand("
+        Yii::$app->db->createCommand("
         UPDATE water_monitor SET site =(select state from $rtuname  order by id desc LIMIT 1)where current_site='$varname';
                                                  ")->execute();
         Yii::$app->db->createCommand("
@@ -105,10 +105,9 @@ class WatermonitorController extends Controller
         UPDATE water_monitor SET rainfall =(select rainfall from $rtuname order by id desc LIMIT 1)where current_site= '$varname';
                                      ")->execute();
 
-        Yii::$app->db->createCommand("
-        UPDATE water_monitor SET datetime =(select date from $rtuname order by id desc LIMIT 1)where current_site= '$varname';
-                                    ")->execute(); 
-}  
+
+   
+ }  
      
          return $this->render('index', [
             'searchModel' => $searchModel,
@@ -127,6 +126,7 @@ class WatermonitorController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
    public function actionWarning()
    {
             echo "预警";
@@ -135,8 +135,6 @@ class WatermonitorController extends Controller
    {
             echo "报警";
    }
-     
-
    /* public function actionAlldataAnalysis()
   {
          $id = 2;
@@ -334,10 +332,10 @@ class WatermonitorController extends Controller
 	}
 	
 	//socket数据客户端
-	public function myactionSocketclient($rtuname, $time){
+	public function actionSocketclient(){
 		echo "<h2>tcp/ip connection </h2>\n";
-		$service_port = 9008;
-		$address = '183.230.164.63';
+		$service_port = 9000;
+		$address = '183.230.176.58';
 
 		$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 		if ($socket === false) {
@@ -353,8 +351,7 @@ class WatermonitorController extends Controller
 		} else {
 			echo "OK \n";
 		}
-	
-         	$in = "PageStart:Rtu:".$rtuname."  "."Time:".$time." PageEnd";
+		$in = "测试数据流test123456789";
 		$out = "";
 		echo "sending http head request ...";
 		socket_write($socket, $in, strlen($in));
@@ -363,86 +360,30 @@ class WatermonitorController extends Controller
 		
 
 		echo "Reading response:\n\n";
-	/*	while ($out = socket_read($socket, 8192)) {
+		while ($out = socket_read($socket, 8192)) {
 			echo "<br><br><br>服务器数据：".$out."<br><br><br>";
 			//写入文件
 			$myfile = fopen("D:/xampp/htdocs/WlMonitor/data/client.txt", "w") or die("Unable to open file!");
 			$txt = "客户端获取数据：".$out;
 			
 			fwrite($myfile, $txt);
-		}*/
+		}
 		echo "closeing socket..";
 		//socket_close($socket);
 		echo "ok .\n\n";
 
 	}
-
-          public function actionSetime($id){
-                 $tims = date('ymdHis',time()) ;              
-                // $valss =   Yii::$app->request->post('y_open');
-                // print_r($valss);           
-                 echo "RTU ".$id."设置时钟成功";
-	         echo $tims;	
-	
-            $this->myactionSocketclient($id,$tims);
-
-                 //       echo "<script>alert(1111);</script>";
-
-                 //       $sec =3;      
-                 //   echo "<script language=\"javascript\">alert(\"caomang\"); </script>";     
-                 // return $this->render(['remote'],['sec'=>$sec]);
-                 //    return $this->redirect(['remote']);
- 
-           }
-
-
-
-
-        public function actionRemote(){
- 
-                   $data =  Waterstation::find()->all();
-                   $searchModel = new WaterMonitorSearch();
-                   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-      
-           if(!isset($rtutablename))
-                 $rtutablename = '';
-
-           $val =   Yii::$app->request->post('rtuname');
-
-           echo $val;
-        
-           $rtutablename = $val;
-                   
-     
-          return $this->render('remote', [
-                          'searchModel' => $searchModel,
-                          'dataProvider' => $dataProvider,
-                          'data' =>$data,
-                          'rtutablename' =>$rtutablename,
-                          ]);
-
-      }
-       
 	
 	//发送图片信息到客户端
 	public function actionPictureclient(){
 		//发送到客户端  
-                   //echo "TBD";       
-                   $data =  Waterstation::find()->all();
-                   $searchModel = new WaterMonitorSearch();
-                   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-         
-                   return $this->render('remote', [
-                          'searchModel' => $searchModel,
-                          'dataProvider' => $dataProvider,
-                          'data' =>$data,
-                          ]);
-		                  //$msg = hex2bin("7BA1000AIMAG00000000000000000000XXXX\r\n7B");
-	            $clientSockets = 2;
-                                  // 	$msg = hex2bin("7BA1007B");
-	                          //	for($n=0;$n<count($clientSockets);$n++){
-	                          //		socket_write($clientSockets[$n], $msg, strlen($msg));
-	                          //	}
+               echo "TBD";
+		//$msg = hex2bin("7BA1000AIMAG00000000000000000000XXXX\r\n7B");
+	        $clientSockets = 2;
+        // 	$msg = hex2bin("7BA1007B");
+	//	for($n=0;$n<count($clientSockets);$n++){
+	//		socket_write($clientSockets[$n], $msg, strlen($msg));
+	//	}
 	}
 	
 	//水位监测

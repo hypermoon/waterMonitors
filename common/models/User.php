@@ -1,6 +1,6 @@
 <?php
 
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 
 use Yii;
 

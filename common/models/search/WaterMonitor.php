@@ -1,11 +1,11 @@
 <?php
 
-namespace res\waterMonitor\common\models\search;
+namespace res\waterMonitors\common\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use res\waterMonitor\common\models\WaterMonitor as WaterMonitorModel;
+use res\waterMonitors\common\models\WaterMonitor as WaterMonitorModel;
 
 /**
  * WaterMonitor represents the model behind the search form about `res\waterMonitor\common\models\WaterMonitor`.

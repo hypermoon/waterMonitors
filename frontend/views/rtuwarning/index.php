@@ -6,26 +6,29 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '站点管理';
+$this->title = 'Rtu报警信息';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="waterstation-index">
+<div class="rtuwarning-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('创建站点', ['create'], ['class' => 'btn btn-success']) ?>
+        <!-- = Html::a('Create Rtuwarning', ['create'], ['class' => 'btn btn-success']) -->
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'sitenumber',
-            'stationame',
-            'bakup',
-            'fatherpoint',
-            'desciber',
+            //'id',
+            'rtuno',
+            'date',
+            'waterlv',
+            'rainfall',
+             'volte',
+            // 'originstr:ntext',
+             'bakup',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
