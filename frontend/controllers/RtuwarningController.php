@@ -3,47 +3,50 @@
 namespace res\waterMonitors\frontend\controllers;
 
 use Yii;
-use res\waterMonitors\common\models\User;
-use res\waterMonitors\common\models\search\User as UserSearch;
+use res\waterMonitors\common\models\Rtuwarning;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * RtuwarningController implements the CRUD actions for Rtuwarning model.
  */
-class UserController extends Controller
+class RtuwarningController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all User models.
+     * Lists all Rtuwarning models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Rtuwarning::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single User model.
-     * @param string $id
+     * Displays a single Rtuwarning model.
+     * @param integer $id
      * @return mixed
      */
     public function actionView($id)
@@ -54,13 +57,13 @@ class UserController extends Controller
     }
 
     /**
-     * Creates a new User model.
+     * Creates a new Rtuwarning model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new Rtuwarning();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,9 +75,9 @@ class UserController extends Controller
     }
 
     /**
-     * Updates an existing User model.
+     * Updates an existing Rtuwarning model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -84,16 +87,16 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('_updateform', [
+            return $this->render('update', [
                 'model' => $model,
             ]);
         }
     }
 
     /**
-     * Deletes an existing User model.
+     * Deletes an existing Rtuwarning model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -104,15 +107,15 @@ class UserController extends Controller
     }
 
     /**
-     * Finds the User model based on its primary key value.
+     * Finds the Rtuwarning model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return User the loaded model
+     * @param integer $id
+     * @return Rtuwarning the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = Rtuwarning::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

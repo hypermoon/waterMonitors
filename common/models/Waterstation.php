@@ -1,7 +1,7 @@
 <?php
 
 //namespace app\models;
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 use Yii;
 
 /**
@@ -44,11 +44,11 @@ class Waterstation extends \frontend\core\BaseActiveRecord
     public function attributeLabels()
     {
         return [
-            'sitenumber' => 'RTU编号',
-            'stationame' => '站点名称',
-            'fatherpoint' => '上级节点',
-            'desciber' => '描述',
-            'bakup' => '备份',
+            'sitenumber' => 'Sitenumber',
+            'stationame' => 'Stationame',
+            'fatherpoint' => 'Fatherpoint',
+            'desciber' => 'Desciber',
+            'bakup' => 'Bakup',
         ];
     }
 }

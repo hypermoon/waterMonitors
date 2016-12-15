@@ -2,12 +2,12 @@
 
 //namespace app\controllers;
 
-namespace res\waterMonitor\frontend\controllers;
+namespace res\waterMonitors\frontend\controllers;
 
 use Yii;
 //use app\models\WaterSinglertustation;
-use res\waterMonitor\common\models\WaterSinglertustation;
-use res\waterMonitor\common\models\Waterstation;
+use res\waterMonitors\common\models\WaterSinglertustation;
+use res\waterMonitors\common\models\Waterstation;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -32,26 +32,79 @@ class WaterSinglertustationController extends Controller
 
 public function actionSelectrtu($id)
 {
+   //echo "<script language=\"javascript\">alert(\"ajaxtest\"); </script>";     
    if(!isset($rtutablename))
-             $rtutablename = '';
-   $model = new Waterstation(); 
+            $rtutablename = '';
+        
+       //$query = WaterMonitorModel::find();
+        //$dataProvider = new ActiveDataProvider([
+        //    'query' => $query,
+       // ]);
 
-   $val = Yii::$app->request->post('rtuname');
-   //echo $val;
-   $data = Waterstation::find()->all();
-   $dataProvider = new ActiveDataProvider([
-      //  'query' => WaterSinglertustation::findx('rtu_'.$val),
-        'query' => WaterSinglertustation::findx('water_singlertustation'),
-  ]);
-   $rtutablename = $val;
-   return $this->render('index',[
-          'dataProvider' =>$dataProvider,
-          'data' =>$data,
-          'rtutablename' =>$rtutablename,
-  ]);
+       // if (!($this->load($params) && $this->validate())) {
+       //      return $dataProvider;
+       // }
+        $model = new Waterstation();
+
+       //  echo "<script language=\"javascript\">alert(\"chaomang\"); </script>";     
+   //   if ($model->load(Yii::$app->request->post())){          //&& $model->save()) {
+      
+  //       echo "<script language=\"javascript\">alert(\"caomang\"); </script>";     
+  //    }
+  //     else
+   //   {
+    //     echo "<script language=\"javascript\">alert(\"chaomang\"); </script>";     
+   //  }
+ //    echo var_dump((Yii::$app->request->post())); 
+//      echo $rtuname; 
+
+    //  if($id == '默认表')
+           $val =   Yii::$app->request->post('rtuname');
+      //   $val =   Yii::$app->request->get('rtuname');
+    //   else
+      //      $val = $id; 
+     
+         echo $val;    
+      //   $val = 555555;
+
+       //        $val = $id;
+       //     $model = new Waterstation();
+        $data =  Waterstation::find()->all();
+       
+ //       $datastationProvider = new ActiveDataProvider([
+ //           'query' => Waterstation::find(),
+ //       ]);
+
+        $dataProvider = new ActiveDataProvider([
+          //  'query' => WaterSinglertustation::findx(''),
+           'query' => WaterSinglertustation::findx('water_singlertustation'),
+        //    'query' => WaterSinglertustation::findx('rtu_'.$val),
+        ]);
+
+        $rtutablename = $val;
+       
+        // return $this->redirect('index', ['dataProvider' =>$dataProvider);
+        // return $this->redirect(['selectrtu', 'id' =>555555]);
+        // return $this->redirect($this->render('selectrtu',['dataProvider'=>$dataProvider ] ));
+      
+      //   $this->redirect(['index','id'=> $val]);
+      //echo    Yii::$app->urlManager->createUrl('index.php'); 
+   
+     // return  $this->render('selectrtu', [
+
+         return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'data' =>$data,
+            'rtutablename' =>$rtutablename,
+         //   'id' =>$rtutablename,
+        ]);
+        
+    //  return $this->redirect(['selectrtu','id'=> $val]);
+       
+       //      'model' =>$model,
+       //      'datastationProvider' =>$datastationProvider,
+       //      return $val;
 }
-
-
 
 
     /**
@@ -61,11 +114,38 @@ public function actionSelectrtu($id)
     public function actionIndex()
     {
         $model = new Waterstation();
-        $data = Waterstation::find()->all();
-        $dataProvider = new ActiveDataProvider([
-           // 'query' => WaterSinglertustation::find(),
-            'query' => WaterSinglertustation::findx('water_singlertustation'),
+        $data =  Waterstation::find()->all();
+  
+    // $model->attributes=$_POST[];
+    // $mod=$_POST[];
+
+    //  print_r($mod);
+      // echo var_dump($model->attributes) ;      
+ //       $model = $this->findModel($id);
+		    //  $val =  Yii::$app->request->post();
+
+               //   $model->load(Yii::$app->request->post());
+               // ($val);     
+              //echo var_dump($model->sitenumber) ;      
+            
+
+ //echo ($model->sitenumber);
+
+     // if ($model->load(Yii::$app->request->post()) ) {
+        //  print_r "<script language=\"javascript\">alert($val); </script>";     
+  // }
+         // print_r($.post());  
+         //echo $.post;
+    // echo var_dump(Yii::$app);
+    
+    $dataProvider = new ActiveDataProvider([
+          // return 'water_singlertustation';
+           'query' => WaterSinglertustation::findx('water_singlertustation'),
+           //'query' => WaterSinglertustation::find(),
+//        'query' => WaterSinglertustation::findx('rtu_555555'),
         ]);
+
+   //     print_r($dataProvider->query);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -122,38 +202,50 @@ public function actionSelectrtu($id)
             ]);
         }
     }
-    
-    public function actionUpdatertu($id)
+   
+   public function actionUpdatertu($id)
    {
-           if(!isset($rtutablename))
-               $rtutablename = '';
-           $data = Waterstation::find()->all();
-          if($id == '默认表')
-             $rtuname = 'water_singlertustation';
-          else
-             $rtuname = 'rtu_'.$id;
+   
+   if(!isset($rtutablename))
+            $rtutablename = '';
 
-           $dataProvider = new ActiveDataProvider([
-            'query' =>WaterSinglertustation::findx($rtuname), 
-           ]);
-          return $this->render('selectrtu',[
-                        'dataProvider' => $dataProvider,
-                        'data' =>$data,
-                        'rtutablename' =>$id,
-                  ]);
-           
+
+        $data =  Waterstation::find()->all();
+        if($id == '默认表')
+            $rtuname = 'water_singlertustation';
+        else
+            $rtuname = 'rtu_'.$id; 
+        
+         $dataProvider = new ActiveDataProvider([
+           // 'query' => WaterSinglertustation::find(),
+            'query' => WaterSinglertustation::findx($rtuname),
+        ]);
+
+      
+      return  $this->render('selectrtu', [
+       //  return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'data' =>$data,
+            'rtutablename' =>$id,              //$rtutablename,
+         ]);
    }
+
+ 
     public function actionAlldataanalysis($id)
     {
-        if($id =='默认表')
-           $rtuname = 'water_singlertustation';
+//	    if(!isset($rtutablename))
+//		      $rtutablename = '555555';
+   //  if(!isset($rtutablename))
+    //        $rtutablename =  Yii::$app->request->post('rtuname');
+       // var $rtuname;
+        if($id == '默认表')
+            $rtuname = 'water_singlertustation';
         else
-           $rtuname = 'rtu_'.$id;
-
-
+            $rtuname = 'rtu_'.$id; 
+ 
         $dataProvider = new ActiveDataProvider([
           //  'query' => WaterSinglertustation::find(),
-            'query' => WaterSinglertustation::findx($rtuname),
+          'query' => WaterSinglertustation::findx($rtuname),  //('rtu_555555'),
         ]);
          // echo "aadfeeew";
      //   $id =2;
@@ -205,7 +297,7 @@ public function actionSelectrtu($id)
      */
     protected function findModel($id)
     {
-   //     if (($model = WaterSinglertustation::findOnex(rtu_555555,$id)) !== null) {
+     //   if (($model = WaterSinglertustation::findOnex(rtu_555555,$id)) !== null) {
         if (($model = WaterSinglertustation::findOne($id)) !== null) {
             return $model;
         } else {

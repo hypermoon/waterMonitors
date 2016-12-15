@@ -2,7 +2,7 @@
 
 //namespace app\models;
 
-namespace res\waterMonitor\common\models;
+namespace res\waterMonitors\common\models;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
@@ -39,8 +39,9 @@ class WaterSinglertustation extends \frontend\core\BaseActiveRecord
      */
     public static function tableName()
     {
-     //   return 'water_singlertustation';
-         return self::$table;
+      //     return "rtu_555555";
+      //     return 'water_singlertustation';
+             return self::$table;
      }
 
     /**
@@ -92,6 +93,7 @@ class WaterSinglertustation extends \frontend\core\BaseActiveRecord
         if (self::$table != $table) {
             self::$table = $table;
         }
+        //echo get_called_class();
         return Yii::createObject(ActiveQuery::className(), [get_called_class(), ['from' => [static::tableName()]]]);
     }
 
@@ -101,7 +103,7 @@ class WaterSinglertustation extends \frontend\core\BaseActiveRecord
      */
 //    public static function instantiate($row)
  //   {
-  //      return new static(static::tableName());
+       // return new static(static::tableName());
  //   }
 
     /**
