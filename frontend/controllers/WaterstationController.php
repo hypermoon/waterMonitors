@@ -138,20 +138,20 @@ class WaterstationController extends Controller
                                          volte real,
                                          originstr text,
                                          dgtype integer)
-                                        ")->execute();
-                                 Yii::$app->db->createCommand("
-                                 INSERT INTO water_monitor(site,current_site) VALUES('重庆','$namestr');
-                                      ")->execute();  
-                    //      echo "<script language=\"javascript\">alert(\"321\"); </script>";     
+                                        ")->execute(); 
+                    
+                  Yii::$app->db->createCommand("
+                  INSERT INTO water_monitor (site,current_site) VALUES ('重庆','$namestr');
+                                               ")->execute(); 
+                  //echo "<script language=\"javascript\">alert(\"321\"); </script>";     
                 }
         
-
-   
-                     // return $this->render('update', ['model' => $model,]);
-                      return $this->redirect(['index']);
+                  //return $this->render('update', ['model' => $model,]);
+                  return $this->redirect(['index']);
         }
 
     }
+
      /**
 
                                    statno integer,

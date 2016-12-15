@@ -9,13 +9,15 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'RTU遥测站历史数据';
+$this->title = 'RTU遥测站rtu历史数据';
 $this->params['breadcrumbs'][] = $this->title;
 
-//  if(!isset($rtutablename))
-  //          $rtutablename = '默认表';
 
-       // <?= Html::a('创建记录', ['create'], ['class' => 'btn btn-success']) 
+ // if(!isset($rtutablename))
+ //           $rtutablename = '默认表';
+  
+         //<?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','post','id'=>$rtutablename]);
+     // <?= Html::a('创建记录', ['create'], ['class' => 'btn btn-success']) 
          //>
 ?>
 <div class="water-singlertustation-index">
@@ -23,18 +25,27 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2><?= Html::encode($this->title) ?></h2>
 
     <p>
-        <?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','id'=>$rtutablename]);?>
-         <?= Html::dropDownList('rtuname',$rtutablename,ArrayHelper::map($data,'sitenumber','sitenumber'),['onchange'=>'this.form.submit()','prompt'=>'请选择:rtu表','style'=>'width:120px']); ?>
-     
-        <?=Html::label(' RTU编号:'.$rtutablename); ?>
-        <?= Html::endForm();  ?> 
-        <?=Html::a('更新RTU数据',['updatertu','id'=>$rtutablename],['class' =>'btn btn-success']) ?>
+         <?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','id' => $rtutablename]);?>
+        <?= Html::dropDownList('rtuname',$rtutablename,ArrayHelper::map($data,'sitenumber','sitenumber'),['onchange'=>'this.form.submit()','prompt'=>'请选择:rtu表','style'=>'width:120px']); ?>
+         <?=Html::label(' RTU编号:'.$rtutablename);?>
+          
+        <?= Html::endForm();  ?>
+        <?= Html::a('更新rtu数据', ['updatertu','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
         <div style="text-align:center">
+<<<<<<< HEAD
         <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename,'sort'=>$sort,'page' =>$page], ['class' => 'btn btn-success']) ?>
         </div> 
    </p>
+=======
+        <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
+        </div>
+</p>
+>>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
   
       
+
+
+
 <?=GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [

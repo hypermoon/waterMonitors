@@ -44,11 +44,19 @@ class Waterstation extends \frontend\core\BaseActiveRecord
     public function attributeLabels()
     {
         return [
+<<<<<<< HEAD
             'sitenumber' => 'RTU编号',
             'stationame' => '站点名称',
             'fatherpoint' => '手机号',
             'desciber' => '描述',
             'bakup' => '联系人',
+=======
+            'sitenumber' => 'Sitenumber',
+            'stationame' => 'Stationame',
+            'fatherpoint' => 'Fatherpoint',
+            'desciber' => 'Desciber',
+            'bakup' => 'Bakup',
+>>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
         ];
     }
 }

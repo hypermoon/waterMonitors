@@ -47,6 +47,7 @@ class Rtuwarning extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+<<<<<<< HEAD
             'rtuno' => 'Rtu编号',
             'date' => '日期',
             'waterlv' => '报警水位',
@@ -54,6 +55,15 @@ class Rtuwarning extends \yii\db\ActiveRecord
             'volte' => '报警电压',
             'originstr' => 'Originstr',
             'bakup' => '手机号',
+=======
+            'rtuno' => 'Rtuno',
+            'date' => 'Date',
+            'waterlv' => 'Waterlv',
+            'rainfall' => 'Rainfall',
+            'volte' => 'Volte',
+            'originstr' => 'Originstr',
+            'bakup' => 'Bakup',
+>>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
         ];
     }
 }
