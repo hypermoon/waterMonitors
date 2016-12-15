@@ -205,7 +205,7 @@ public function actionSelectrtu($id)
    
    public function actionUpdatertu($id)
    {
-<<<<<<< HEAD
+//<<<<<<< HEAD
            if(!isset($rtutablename))
                $rtutablename = '';
            $data = Waterstation::find()->all();
@@ -235,7 +235,7 @@ public function actionSelectrtu($id)
                         'sort'=>$sort,
                   ]);
            
-=======
+/*=======
    
    if(!isset($rtutablename))
             $rtutablename = '';
@@ -260,7 +260,7 @@ public function actionSelectrtu($id)
             'rtutablename' =>$id,              //$rtutablename,
          ]);
 >>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
-   }
+*/   }
 
  
     public function actionAlldataanalysis($id)
@@ -273,7 +273,6 @@ public function actionSelectrtu($id)
         if($id == '默认表')
             $rtuname = 'water_singlertustation';
         else
-<<<<<<< HEAD
            $rtuname = 'rtu_'.$id;
 
         //$mypage = $_GET['page'];
@@ -283,13 +282,6 @@ public function actionSelectrtu($id)
         $dataProvider = new ActiveDataProvider([
           //  'query' => WaterSinglertustation::find(),
             'query' => WaterSinglertustation::findx($rtuname)->where(['<>','dgtype','5']),
-=======
-            $rtuname = 'rtu_'.$id; 
- 
-        $dataProvider = new ActiveDataProvider([
-          //  'query' => WaterSinglertustation::find(),
-          'query' => WaterSinglertustation::findx($rtuname),  //('rtu_555555'),
->>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
         ]);
 
     //   $page =$dataProvider->pagination;

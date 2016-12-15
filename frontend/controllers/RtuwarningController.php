@@ -1,9 +1,9 @@
 <?php
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //namespace app\controllers;
-=======
->>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
+//=======
+//>>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
 namespace res\waterMonitors\frontend\controllers;
 
 use Yii;

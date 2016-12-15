@@ -32,15 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::endForm();  ?>
         <?= Html::a('更新rtu数据', ['updatertu','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
         <div style="text-align:center">
-<<<<<<< HEAD
         <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename,'sort'=>$sort,'page' =>$page], ['class' => 'btn btn-success']) ?>
         </div> 
    </p>
-=======
-        <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
-        </div>
-</p>
->>>>>>> 9c4aeb56d7c2ba56f7e0b2a557161843ec46d9db
   
       
 
