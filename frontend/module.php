@@ -1,10 +1,10 @@
 <?php
 
-namespace res\waterMonitor\frontend;
+namespace res\waterMonitors\frontend;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'res\waterMonitor\frontend\controllers';
+    public $controllerNamespace = 'res\waterMonitors\frontend\controllers';
 
     public function init()
     {
