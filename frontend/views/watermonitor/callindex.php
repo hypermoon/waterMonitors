@@ -7,11 +7,10 @@ use yii\grid\GridView;
 /* @var $searchModel res\waterMonitor\common\models\search\WaterMonitor */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '水文监测';
+$this->title = 'RTU召测数据';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-<div class="water-monitor-index" style="position:absolute;z-index:1;">
+<div class="water-monitor-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -23,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 --> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+       // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             //'phone',
             'current_level',
             'current_temp',
-             'rainfall',
+            'rainfall',
             // 'img1',
             // 'img2',
+            'accumulator',
+            'sluice',
             'datetime',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
  
 </div>
-<img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/sk-03.gif" style="width:150%;margin-top:400px;margin-left:-50px;">
-

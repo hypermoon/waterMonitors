@@ -81,7 +81,7 @@ use miloschuman\highcharts\Highcharts;
           ]
        ],
       'series' => [
-         ['name' => 'Jane', 'data' => [1.2, 0.3, 4.4,2.4,5.7,5.3,7.4,8.5]],
+    //     ['name' => 'Jane', 'data' => [1.2, 0.3, 4.4,2.4,5.7,5.3,7.4,8.5]],
     //     ['name' => 'John', 'data' => [5, 7, 3]]
     //     ['name' => 'isd', 'data' =>$idrows],      // $jans],
    

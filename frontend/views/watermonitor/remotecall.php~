@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $searchModel res\waterMonitor\common\models\search\WaterMonitor */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 date_default_timezone_set('prc');
-$this->title = '远程维护';
+$this->title = '远程召测';
 $this->params['breadcrumbs'][] = $this->title;
  
 $vals = '0';
@@ -16,7 +16,7 @@ $vals = '0';
    if(!isset($rtutablename))
             $rtutablename = ' ';
 ?>
-<script type="text/javascript">
+<script type="text/javascript"> 
         // echo "<script language=\"javascript\">alert(\"caomang\");  
          // echo "alert(\'caomang\');";     
         // alert('233'); 
@@ -43,7 +43,7 @@ $vals = '0';
        if (s < 10) { istr ="0"+ s };
        // alert('cwoja3va'); 
         var imgObj1 = document.getElementById("y_open");
-         	imgObj1.style.display="block";
+        // 	imgObj1.style.display="block";
       // $("#clock").innerHTML('当前时间：' + new Date().toLocaleDateString() +""+ myArray[weekday] +""+ hstr +":"+ mstr +":"+ istr);
       // $("#cloc1k").innerHTML('当前时间：'+ mstr +":"+ istr);
        
@@ -53,17 +53,19 @@ $vals = '0';
     //  $("#cloc1k").innerHTML("ff");
    //     alert($vals);
  
+
      //  $("#clock").innerHTML('当前时间：' + new Date().toLocaleDateString() +""+ myArray[weekday] +""+ hstr +":"+ mstr +":"+ istr);
  //         setTimeout(showTime, 1000);
       return $vals;  
  }
+
 </script>
-<img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/time1.png" style="width:95%;position:absolute;right:0px;bottom:0px;z-index:0;">
-<div class="water-monitor-index" style="position:absolute;z-index:1;">
+     <img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/skimg.png" style="width:2100px;height:570px; position:absolute;right:0px;bottom:0px;z-index:0;">
+<div class="water-monitor-index" style="z-index:1;position:absolute;">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <p>
-         <?=Html::beginForm(['/waterMonitor/watermonitor/remote','id'=>$rtutablename]);?>
+         <?=Html::beginForm(['/waterMonitor/watermonitor/calltest','id'=>$rtutablename]);?>
          <?=Html::label(' RTU编号:'.$rtutablename) ; ?>
          <?= Html::dropDownList('rtuname', $rtutablename,ArrayHelper::map($data,'sitenumber',
                'sitenumber'),['onchange'=>'this.form.submit()' ,'prompt'=>'请选择:rtu表','style'=>'width:120px']); ?>
@@ -77,16 +79,20 @@ $vals = '0';
        <div>  
            <div id="tt1">  
            <?php  echo '系统时间:';  // echo $this->render('_search', ['model' => $searchModel]); ?>
+         
            <?php echo date('y-m-d H:i:s',time())  ?>
            <br/>
   <!--         <input name="open_date" id="y_open" style="width:190px;" type="text" onclick="javascript:showTime()" value="点击更新时间" readonly="true" >
       -->
              <br/>
             
-             <?= Html::a('设置RTU时钟', ['setime','id' => $rtutablename], ['class' => 'btn btn-success']) ?>
- 
+              <!--= Html::a('召测', ['remotecallrtu','id' => $rtutablename], ['class' => 'btn btn-success'])-->
+             
+               <?= Html::a('召测', ['remotedelay','id' => $rtutablename], ['class' => 'btn btn-success' ])?> 
+
+
              <script>
-         //    <?php echo "javascript:showTime();";  ?> 
+                   //       <?php echo "javascript:showTime();";  ?> 
             </script>
            </div>
       </div>

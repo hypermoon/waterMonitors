@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title ='用户管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div class="user-index" style="position:absolute;z-index:1;">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -91,3 +91,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
 </div>
+<div style="width:100%;"><img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/sk3_03.gif"style="width:105%;margin-left:-20px; margin-top:300px;"></div>

@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => $model->site, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = '修改';
 ?>
 <div class="water-monitor-update">
-
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [

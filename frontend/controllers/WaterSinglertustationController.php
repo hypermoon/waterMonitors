@@ -134,7 +134,8 @@ public function actionSelectrtu($id)
              $rtuname = 'rtu_'.$id;
 
            $page =  Yii::$app->request->get('page');
-           echo $page;          
+           $sort = Yii::$app->request->get('sort');
+    //       echo $page;          
 
             $dataProvider = new ActiveDataProvider([
             'query' =>WaterSinglertustation::findx($rtuname)->where(['<>','dgtype','5']), 
@@ -150,6 +151,7 @@ public function actionSelectrtu($id)
                         'data' =>$data,
                         'rtutablename' =>$id,
                         'page'=>$page,
+                        'sort'=>$sort,
                   ]);
            
    }
@@ -171,9 +173,10 @@ public function actionSelectrtu($id)
 
     //   $page =$dataProvider->pagination;
     //   echo var_dump($page);
-   
-          $page = Yii::$app->request->getUrl();
-        //  echo var_dump($page);      
+        //  echo var_dump($dataProvider->sort);   
+
+         // $page1 = Yii::$app->request->getUrl();
+         // echo var_dump($page1);      
  //   $searchModel = new WaterMonitorSearch();
  //   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

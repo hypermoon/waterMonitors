@@ -1,4 +1,4 @@
-<?php
+p
 
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -9,7 +9,8 @@ use yii\grid\GridView;
 $this->title = '站点管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="waterstation-index" style="position:relative;z-index:1; ">
+<div class="waterstation-index">
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -29,6 +30,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-</div>
-<div style="width:100%;"><img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/sk_02.gif" style="width:105%;margin-left:-30px;">
 </div>

@@ -334,7 +334,7 @@ class WatermonitorController extends Controller
 	}
 	
 	//socket数据客户端
-	public function myactionSocketclient($rtuname, $time){
+	public function myactionSocketclient($rtuname,$type,$content){    // $time){
 		echo "<h2>tcp/ip connection </h2>\n";
 		$service_port = 9008;
 		$address = '183.230.164.63';
@@ -354,16 +354,29 @@ class WatermonitorController extends Controller
 			echo "OK \n";
 		}
 	
-         	$in = "PageStart:Rtu:".$rtuname."  "."Time:".$time." PageEnd";
-		$out = "";
-		echo "sending http head request ...";
-		socket_write($socket, $in, strlen($in));
-		echo  "OK\n";
+                 switch($type)
+                {
+                   case 1:                //set rtu time
+         	           $in = "PageStart:Rtu:".$rtuname."Type:$type;"."Time:".$content." PageEnd";
+		           $out = "";
+                         break;
+                   case 2:                //remote call     
+         	           $in = "PageStart:Rtu:".$rtuname."Type:$type;"."Time:".$content." PageEnd";
+                         break;
+                   default:
+                         break;
+                }  
+               
+		
+
+                 echo "sending http head request ...";
+            	 socket_write($socket, $in, strlen($in));
+		 echo  "OK\n";
 		//socket_close($socket);
 		
 
-		echo "Reading response:\n\n";
-	/*	while ($out = socket_read($socket, 8192)) {
+		//echo "Reading response:\n\n";
+	        /*	while ($out = socket_read($socket, 8192)) {
 			echo "<br><br><br>服务器数据：".$out."<br><br><br>";
 			//写入文件
 			$myfile = fopen("D:/xampp/htdocs/WlMonitor/data/client.txt", "w") or die("Unable to open file!");
@@ -372,8 +385,8 @@ class WatermonitorController extends Controller
 			fwrite($myfile, $txt);
 		}*/
 		echo "closeing socket..";
-		//socket_close($socket);
-		echo "ok .\n\n";
+		socket_close($socket);
+		//echo "ok .\n\n";
 
 	}
 
@@ -384,7 +397,7 @@ class WatermonitorController extends Controller
                  echo "RTU ".$id."设置时钟成功";
 	         echo $tims;	
 	
-            $this->myactionSocketclient($id,$tims);
+            $this->myactionSocketclient($id,1, $tims);
 
                  //       echo "<script>alert(1111);</script>";
 
@@ -423,7 +436,31 @@ class WatermonitorController extends Controller
 
       }
        
-	
+        public function actionCalltest(){
+ 
+                   $data =  Waterstation::find()->all();
+                   $searchModel = new WaterMonitorSearch();
+                   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      
+           if(!isset($rtutablename))
+                 $rtutablename = '';
+
+           $val =   Yii::$app->request->post('rtuname');
+
+           echo $val;
+        
+           $rtutablename = $val;
+                   
+     
+          return $this->render('remotecall', [
+                          'searchModel' => $searchModel,
+                          'dataProvider' => $dataProvider,
+                          'data' =>$data,
+                          'rtutablename' =>$rtutablename,
+                          ]);
+
+
+         }	
 	//发送图片信息到客户端
 	public function actionPictureclient(){
 		//发送到客户端  
@@ -445,6 +482,58 @@ class WatermonitorController extends Controller
 	                          //	}
 	}
 	
+	public function actionRemotecall(){
+		//发送到客户端  
+                   //echo "TBD";       
+                   $data =  Waterstation::find()->all();
+                   $searchModel = new WaterMonitorSearch();
+                   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+         
+                   return $this->render('remotecall', [
+                          'searchModel' => $searchModel,
+                          'dataProvider' => $dataProvider,
+                          'data' =>$data,
+                          ]);
+           }          
+ 
+        public function actionRemotedelay($id)
+        {
+                     
+                  $tims = date('ymdHis',time()) ;              
+                  $this->myactionSocketclient($id,2,$tims);
+               
+              return $this->redirect(['watermonitor/waiting','id' =>$id]);
+              // return $this->redirect(['water-singlertustation/index']);
+               
+        }
+        public function actionWaiting($id)
+        {
+                  // sleep(10);
+             return $this->render('waiting',['id' =>$id]); 
+         }
+
+        public function actionRemotecallrtu($id){
+                  $searchModel = new WaterMonitorSearch();
+                  //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+                  //$model = WaterMonitor::find();
+            
+                //  $tims = date('ymdHis',time()) ;              
+            
+                 // $this->myactionSocketclient($id,2,$tims);
+        
+                //  sleep(10);
+
+                  $dataProvider = new ActiveDataProvider([
+                  'query' =>WaterMonitor::find()->where(['=', 'current_site',$id]),    // ->where(['<>','dgtype','5']), 
+                   ]);              
+              
+       
+                  return $this->render('callindex',[
+                          'dataProvider' => $dataProvider,
+                          'searchModel' => $searchModel,
+                           ]);   
+        } 
+
 	//水位监测
 	 public function actionWatermonitor()
     {

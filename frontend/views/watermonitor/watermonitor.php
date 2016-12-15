@@ -28,7 +28,7 @@ $this->title = '水文监测';
 <?php
 $datas = "";
 foreach ($models as $lists) {
-	$datas.= $lists['id']."*".$lists['site']."*".$lists['individual_monitoring']."*".$lists['phone']."*".$lists['current_site']."*".$lists['current_level']."*".$lists['current_temp']."*".$lists['rainfall']."*".$lists['img1']."*".$lists['img2']."[then]";
+	$datas.= $lists['id']."*".$lists['site']."*".$lists['individual_monitoring']."*".$lists['phone']."*".$lists['current_site']."*".$lists['current_level']."*".$lists['current_temp']."*".$lists['rainfall']."*".$lists['img1']."*".$lists['img2']."*".$lists['datetime']."[then]";
 }
 
 $dataArray = explode("[then]",$datas);
@@ -36,7 +36,7 @@ for($n=0;$n<count($dataArray)-1;$n++){
 	$dagaList = explode("*",$dataArray[$n]);
 	$dagaList2 = explode("*",$dataArray[$n+1]);
 	if($dagaList2[0]==""){
-		$dagaList2 = array("","","","","","","","","","","","");
+		$dagaList2 = array("","","","","","","","","","","","","",);
 	}
 	//echo $dagaList2[1];exit;
 	$n = $n + 1;
@@ -62,11 +62,15 @@ for($n=0;$n<count($dataArray)-1;$n++){
 			<?php
 				if($dagaList[8]!=""){
 			?>
-				<div id="dimg<?=$dagaList[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList[4])?>/<?=trim($dagaList[8])?>" alt="" class="img-indent" style="width:100%;height:100%;"/></div>
+				<div  style="position:relative;"id="dimg<?=$dagaList[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList[4])?>/<?=trim($dagaList[8])?>" alt="" class="img-indent" style="width:100%;height:100%;"/>
+<div style= "position:absolute;bottom:0px;right:0px;color:red;"><?=trim($dagaList[10])?></div>
+</div>
 			<?php
 				}else{
 			?>
-				<div id="dimg<?=$dagaList[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/images/null.jpg" alt="" class="img-indent" style="width:100%;height:100%;"/></div>
+				<div style="position:relative;" id="dimg<?=$dagaList[2]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/images/null.jpg" alt="" class="img-indent" style="width:100%;height:100%;"/>
+<div style="position:absolute;bottom:0px;right:0px;color:red;"><?=trim($dagaList[10])?></div>
+</div>
 			<?php			
 				}
 			?>
@@ -77,11 +81,15 @@ for($n=0;$n<count($dataArray)-1;$n++){
 				<?php
 					if($dagaList2[8]!=""){
 				?>
-					<div id="dimg<?=$dagaList2[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[8])?>" alt="" class="img-indent" style="width:100%;height:100%;"/></div>
+					<div style="position:relative;" id="dimg<?=$dagaList2[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[8])?>" alt="" class="img-indent" style="width:100%;height:100%;"/>
+<div style="position:absolute;right:0px;bottom:0px;color:red;"><?=trim($dagaList[10])?></div>
+</div>
 				<?php
 					}else{
 				?>
-					<div id="dimg<?=$dagaList2[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/images/null.jpg" alt="" class="img-indent" style="width:100%;height:100%;"/></div>
+					<div style="position:relative;" id="dimg<?=$dagaList2[0]?>"><img src="<?php echo Yii::getAlias('@web');?>/public/images/null.jpg" alt="" class="img-indent" style="width:100%;height:100%;"/>
+<div style="position:absolute;bottom:0px;right:0px;color:red;"><?=trim($dagaList[10])?></div>
+</div>
 				<?php
 					}
 				?>

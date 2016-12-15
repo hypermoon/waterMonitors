@@ -9,7 +9,6 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="waterstation-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'sitenumber')->textInput() ?>
