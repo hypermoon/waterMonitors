@@ -46,14 +46,14 @@ for($n=0;$n<count($dataArray)-1;$n++){
 	<tbody>
 		<tr bgcolor="#f5fafa">
 			<td nowrap="nowrap">
-				<?=$dagaList[1]?>&nbsp;&nbsp;<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimg/<?=trim($dagaList[4])?>/<?=trim($dagaList[8])?>');"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img1.png"></a>&nbsp;&nbsp;
-				<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimg/<?=trim($dagaList[4])?>/<?=trim($dagaList[9])?>');"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img2.png"></a>
+				<?=$dagaList[1]?>&nbsp;&nbsp;<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList[4])?>/<?=trim($dagaList[8])?>');"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img1.png"></a>&nbsp;&nbsp;
+				<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList[4])?>/<?=trim($dagaList[9])?>');"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img2.png"></a>
 			</td>
 			<td nowrap="nowrap" colspan="2"><?=$dagaList[2]?>&nbsp;&nbsp;<?=$dagaList[3]?></td>
 			<td rowspan="6" nowrap="nowrap">&nbsp;</td>
 			<td nowrap="nowrap">
-				<?=$dagaList2[1]?>&nbsp;&nbsp;<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList2[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimg/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[8])?>');");"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img1.png"></a>&nbsp;&nbsp;
-				<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList2[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimg/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[9])?>');");"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img2.png"></a>
+				<?=$dagaList2[1]?>&nbsp;&nbsp;<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList2[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[8])?>');");"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img1.png"></a>&nbsp;&nbsp;
+				<a href='#' onclick="javascript:imageSwitcher('<?=$dagaList2[0]?>','<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dagaList2[4])?>/<?=trim($dagaList2[9])?>');");"><img src="<?php echo Yii::getAlias('@web');?>/public/images/img2.png"></a>
 			</td>
 			<td nowrap="nowrap" colspan="2"><?=$dagaList2[2]?>&nbsp;&nbsp;<?=$dagaList2[3]?></td>
 		</tr>
