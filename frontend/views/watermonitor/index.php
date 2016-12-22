@@ -10,7 +10,9 @@ use yii\grid\GridView;
 $this->title = '水文监测';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
+<head>
+ <meta http-equiv='refresh' content ="360">
+</head>
 <div class="water-monitor-index" style="position:absolute;z-index:1;">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -37,9 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
              'rainfall',
             // 'img1',
             // 'img2',
-             'datetime',
-            ['class' => 'yii\grid\ActionColumn'],
-            ['class' => 'yii\grid\CheckboxColumn'],
+           // ['class' => 'yii\grid\CheckboxColumn'],
+            'onlinestat',
+            'datetime',
+            ['class' => 'yii\grid\ActionColumn',
+                         'template'=>'{view}',],
+                       //  'Action'=>['print'=>['label'=>'打印 ' ]    ]],
+            
            //  ['class' => 'yii\grid\DataColumn'],
            // ['class' => 'yii\grid\GridView'],
         ],

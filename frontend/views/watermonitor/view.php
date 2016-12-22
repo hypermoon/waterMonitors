@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => '水文监测', 'url' => ['index']]
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="water-monitor-view">
-<?php echo dkjkfjkdl?>
     <h1><?= Html::encode($this->title) ?></h1>
 <!--
     <p>

@@ -55,9 +55,10 @@ class WaterMonitor extends \frontend\core\BaseActiveRecord
             'img1' => Yii::t('app', 'Img1'),
             'img2' => Yii::t('app', 'Img2'),
 			'client_ip' => Yii::t('app', 'IP地址'),
-			'datetime' => Yii::t('app', '时间'),
+			'datetime' => Yii::t('app', '最后在线时间'),
 			'accumulator' => Yii::t('app', '蓄电池电压'),
 			'sluice' => Yii::t('app', '堰水计'),
+                        'onlinestat' => Yii::t('app', '在线状态'),
 			
         ];
     }

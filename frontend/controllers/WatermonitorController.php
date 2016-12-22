@@ -66,26 +66,21 @@ class WatermonitorController extends Controller
         //   echo var_dump($newdata);
             
 
-     //  foreach($newdata as $nn =>$mm)
-     //  {
-           //           echo $nn."end <br/>";
-           //            echo var_dump($mm)."tt<br/>";
-           // echo var_dump($datass[$nn]);
-          //     echo $nn;
-       //       print_r($mm);
-       //       echo $mm['sitenumber'];
-       //       echo "<br/>";   
-           // echo var_dump($mm);
+        //  foreach($newdata as $nn =>$mm)
+        //  {
+        //           echo $nn."end <br/>";
+        //            echo var_dump($mm)."tt<br/>";
+        // echo var_dump($datass[$nn]);
+        //     echo $nn;
+        //       print_r($mm);
+        //       echo $mm['sitenumber'];
+        //       echo "<br/>";   
+        // echo var_dump($mm);
          
-               //  echo var_dump($mm);
-              //      echo var_dump($datab[$nn]);  
-              //      echo  var_dump($nn)."<br/>";
-      // }       
-
-
-
-
-
+        //  echo var_dump($mm);
+        //      echo var_dump($datab[$nn]);  
+        //      echo  var_dump($nn)."<br/>";
+        // }       
 
          foreach($newdata as $key =>$siteno)
          {
