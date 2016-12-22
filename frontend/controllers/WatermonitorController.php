@@ -891,17 +891,16 @@ class WatermonitorController extends Controller
 	//包解析
 	public function actionAnalysis(){
 	
-        // 	echo hexdec(substr("7ba1000a494d414707e00713110002438401000000000d0a7b",30,2));
-	//	exit;
-	//        header("waterMonitor/user/index");
-                $id = 1;
-               // $model = $this->findModel($id);
-               // $model =WaterSinglertustation::findModel($id);
+                 // 	echo hexdec(substr("7ba1000a494d414707e00713110002438401000000000d0a7b",30,2));
+	         //	exit;
+	         //        header("waterMonitor/user/index");
+                 $id = 1;
+                 // $model = $this->findModel($id);
+                 // $model =WaterSinglertustation::findModel($id);
                 echo $id;
-               
-        $dataProvider = new ActiveDataProvider([
-            'query' => WaterSinglertustation::find(),
-        ]);
+                 $dataProvider = new ActiveDataProvider([
+                     'query' => WaterSinglertustation::find(),
+                   ]);
                // $model = new WaterSinglertustation();
                      //  $query = watersinglertustation::find();
                         //  $dataProvider = new ActiveDataProvider([

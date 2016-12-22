@@ -25,7 +25,40 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="water-singlertustation-index">
 
     <h2><?= Html::encode($this->title) ?></h2>
-    <p >
+<input type="button" value="打印" onclick="printout()" style="float:right;"/>
+<script>
+function printout(){
+var bdhtml;
+bdhtml=window.document.body.innerHTML;
+sprnstr="<!--startprint-->";
+eprnstr="<!--endprint-->";
+prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+999);
+prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
+window.document.body.innerHTML=prnhtml;
+window.print();
+}
+</script>
+<script>
+//window.onload=function(){
+//var id=document.getElementsByTagName("select")[0];
+
+//var value=0;
+//id.onchange=function(){
+//value=id.value;
+//var url=window.location.href;
+//var urls=url.split("?")[0]+"?id="+value;
+//window.location.href=urls;
+
+
+//}
+
+//}
+
+
+//ajax
+
+</script>
+    <p>
          <?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','id'=>$rtutablename]);?>
          <?= Html::dropDownList('rtuname', $rtutablename,ArrayHelper::map($data,'sitenumber',
                'sitenumber'),['onchange'=>'this.form.submit()' ,'prompt'=>'请选择:rtu表','style'=>'width:120px']); ?>
@@ -37,7 +70,8 @@ $this->params['breadcrumbs'][] = $this->title;
       <div style="text-align:center">  
           <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
       </div>
-    </p>  
+    </p>
+<!--startprint-->  
      
         <!--= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success'])-->
       <!-- php $form=ActiveForm::begin(); 
@@ -76,5 +110,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
+<!--endprint-->
 </div>

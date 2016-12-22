@@ -39,6 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'img2',
              'datetime',
             ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\CheckboxColumn'],
+           //  ['class' => 'yii\grid\DataColumn'],
+           // ['class' => 'yii\grid\GridView'],
         ],
     ]); ?>
  
