@@ -37,3 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+<div >
+<img src="<?php echo Yii::getAlias ('@web');?>/public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">
+</div>

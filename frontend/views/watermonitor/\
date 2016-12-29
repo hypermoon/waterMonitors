@@ -37,45 +37,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'current_level',
             'current_temp',
              'rainfall',
-             
             // 'img1',
             // 'img2',
            // ['class' => 'yii\grid\CheckboxColumn'],
            // 'onlinestat',
-          
-       ['label'=>'在线状态',
-        'attribute'=>'onlinestat',
-        'format'=>'raw', 
-       'value'=>function($model){
-       $state=['0'=>'离线','1'=>'在线'];    
-if($state[$model->onlinestat]=='离线'){
-return  Html::img("/WlMonitor/frontend/web/public/backgroundimg/11.png");
-}
-else if($state[$model->onlinestat]=='在线'){
-//return Html::img($model->onlinestat,['width'=>40,'height'=>40,'background-color'=>'red']);
-return  Html::img("/WlMonitor/frontend/web/public/backgroundimg/12.png");
-}
-}
-],
-//['attribute'=>'background-img',
-//'format'=>['background-img',['width'=>'10','height'=>'10']],
-//'value'=>function ($data){
-//return $data->background-img;
-//}],
-        //    ['label' =>'在线状态',
-          //     'attribute'=>'onlinestat',
-            //   'value'=> function($model){
-              //           $state=[
-                //                   
-                  //                '0' =>'离线' 
-                    //               ,
-                      //            '1' =>    //'['class'=>'yii\grid\CheckboxColumn']',
-                        //          '在线',
-                          //     ];  
-                      //   return $state[$model->onlinestat]
-                  // ;
-               //  } 
-        //     ],
+             ['label' =>'在线状态',
+               'attribute'=>'onlinestat',
+               'value'=> function($model){
+                         $state=[
+                                  '0' =>'离线' 
+                                   ,
+                                  '1' =>'yii\grid\CheckboxColumn',
+                            //      '在线',
+                               ];  
+                         return $state[$model->onlinestat]
+                   ;
+                 } 
+             ],
             'datetime',
             ['class' => 'yii\grid\ActionColumn',
                          'template'=>'{view}',
@@ -87,9 +65,9 @@ return  Html::img("/WlMonitor/frontend/web/public/backgroundimg/12.png");
            // ['class' => 'yii\grid\GridView'],
         ],
     ]); ?>
+ 
 </div>
 <script>
-
 </script>
 <img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/sk-03.gif" style="width:150%;margin-top:400px;margin-left:-50px;">
 

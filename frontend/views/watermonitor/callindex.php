@@ -42,5 +42,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
- 
 </div>
+<img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">
