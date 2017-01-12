@@ -509,6 +509,12 @@ class WatermonitorController extends Controller
 
         public function actionRemotecallrtu($id){
                   $searchModel = new WaterMonitorSearch();
+                  $model = WaterMonitor::findOne($id); 
+	
+                 //    $model = WaterMonitor::find();
+                     //	$model = $this->findModel($id);
+                 //   echo "<script language=\"javascript\">alert(\"caomang\"); </script>";     
+         	//	    $model = $this->findModel($id);
                   //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
                   //$model = WaterMonitor::find();
             
@@ -518,14 +524,21 @@ class WatermonitorController extends Controller
         
                 //  sleep(10);
 
+                 // echo var_dump($model);
+          //        $model = $model->orderBy('id')->all();
+
+          
                   $dataProvider = new ActiveDataProvider([
                   'query' =>WaterMonitor::find()->where(['=', 'current_site',$id]),    // ->where(['<>','dgtype','5']), 
                    ]);              
-              
-       
-                  return $this->render('callindex',[
+     //             echo "<script> alert(var_dump($model)); </script>"; 
+               //   echo $model;       
+                  $models =  $dataProvider->getModels();
+                 return $this->render('callindex',[
                           'dataProvider' => $dataProvider,
                           'searchModel' => $searchModel,
+                          'model' => $model,
+                          'models' =>$models,
                            ]);   
         } 
 
@@ -541,11 +554,15 @@ class WatermonitorController extends Controller
             'totalCount' => $model->count(),
         ]);
 
+                  //echo var_dump($model);
+                //  echo "<script> alert($model); </script>"; 
         $model = $model->orderBy('id ASC')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
+                //  echo var_dump($model);
+                 // echo "<script> alert(var_dump($model)); </script>"; 
         return $this->render('watermonitor', [
             'models' => $model,
             'pagination' => $pagination,

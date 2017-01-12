@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -10,32 +9,17 @@ use yii\grid\GridView;
 
 $this->title = 'RTU召测数据';
 $this->params['breadcrumbs'][] = $this->title;
-
-
-
-          
-       //foreach($dataProvider->getModels() as $models){
-      // $models = $dataProvider->getModels();
-
-    //echo var_dump($models->current_site);
-      
-   //       $site = ArrayHelper::toArray($models->current_site);
-         // echo $site;
-        //  $img1= ArrayHelper::toArray($models->img1);
-        //  $img2 = ArrayHelper::toArray($models->img2);
-     //}
-
-
-
 ?>
 <div class="water-monitor-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
-
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+       foreach($dataProvider->getModels() as $model){
+          $site[] = ArrayHelper::toArray($model->current_site);
+          $img1[] = ArrayHelper::toArray($model->img1);
+          $img2[] = ArrayHelper::toArray($model->img2);
+     }
 
 <!--
     <p>
@@ -44,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 --> 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-       // 'filterModel' => $searchModel,i
+       // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -64,21 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-<?php
-    $datas = "";
-
-    foreach ($models as $lists) {
-        $datas.=$lists['current_site']."*".$lists['img1']."*".$lists['img2']."*".$lists['datetime']."[then]" ; 
-         }
-
-         $dataArray =explode("[then]", $datas);
-       
-        for($n=0; $n<count($dataArray)-1; $n++ )
-        {
-            $dataList = explode("*", $dataArray[$n]);
-        
- ?>
+</div>
+ 
       
  <table border="1" cellspacing="0" bordercolor="#3498db" cellpadding="5" width="90%" bgcolor="#666666" align="center">
 		<tbody style="border:2px solid #3498db;">
@@ -95,26 +66,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			<tr bgcolor="#f5fafa">
 				<td rowspan="9" nowrap="nowrap" width="15%" heigth = "200%" style="border:2px solid #3498db;">
-					<div id="img1"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dataList[0])?>/<?=trim($dataList[1])?>"class="img-indent" style="width:100%;height:100%;"/></div>
-					<div id="img2" style="display:none;"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($dataList[0])?>/<?=trim($dataList[1])?>" class="img-indent" style="width:100%;height:100%;"/></div>
+					<div id="img1"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($model['current_site'])?>/<?=trim($model['img1'])?>"class="img-indent" style="width:100%;height:100%;"/></div>
+					<div id="img2" style="display:none;"><img src="<?php echo Yii::getAlias('@web');?>/public/rtuimgs/<?=trim($model['current_site'])?>/<?=trim($model['img2'])?>" class="img-indent" style="width:100%;height:100%;"/></div>
 				</td>
 	<td nowrap="nowrap" width="20%" style="height:50px;border:2px solid #3498db;"><p style="text-indent:6px;" >时间</p></td>
-				<td nowrap="nowrap" width="20%" style="border: 2px solid #3498db;"><?=trim($dataList[3])?></td>
+				<td nowrap="nowrap" width="20%" style="border: 2px solid #3498db;"><?=$model['datetime']?></td>
 			</tr>
 
                       <tr bgcolor="#f5fafa" style="height:50px;border:2px solid #3498db;">
 				<td nowrap="nowrap" style="border:2px solid #3498db;"><p  style="text-indent:6px;" > 当前站点 </p></td>
-				<td nowrap="nowrap" style="border:2px solid #3498db;"><?=trim($dataList[0])?></td>
+				<td nowrap="nowrap" style="border:2px solid #3498db;"><?=$model['current_site']?></td>
 			</tr>
 
 		</tbody>
 	</table>
 
-<?php
- }
- ?>
 
-</div>
+
 
 
 <img src="<?php echo Yii::getAlias('@web');?>/public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">

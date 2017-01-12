@@ -10,10 +10,26 @@ $this->title = $model->sitenumber;
 $this->params['breadcrumbs'][] = ['label' => 'Waterstations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script>
+window.onload=function(){
+var imgid=$("#imgid").text();
+var myimg=document.getElementById("myimg");
+if(imgid==654321){
+var img=document.getElementById("myimg").innerHTML='<img src="../../../public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;" >'; 
+}else if(imgid==555555){
+var img=document.getElementById("myimg").innerHTML='<img src="../../../public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">';
+}else if(imgid==332255){
+var img=document.getElementById("myimg").innerHTML='<img src="../../../public/backgoundimg/zd.gif" style="width:110%;margin-left:-20px;">';
+}else if(imgid==100100){
+var img=document.getElementById("myimg").innerHTML='<img src="../../../public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">';
+}
+}
+</script>
 <div class="waterstation-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+   <h1 id="imgid">
+<?=Html::encode($this->title)?>
+</h1>
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->sitenumber], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->sitenumber], [
@@ -35,8 +51,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'bakup',
         ],
     ]) ?>
-
-</div>
-<div >
-<img src="<?php echo Yii::getAlias ('@web');?>/public/backgroundimg/zd.gif" style="width:110%;margin-left:-20px;">
+<div id="myimg"></div>
 </div>

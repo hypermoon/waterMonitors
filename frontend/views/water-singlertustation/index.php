@@ -23,12 +23,28 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="water-singlertustation-index">
-
     <h2><?= Html::encode($this->title) ?></h2>
 <input type="button" value="打印" onclick="printout()" style="float:right;"/>
 <script>
 function printout(){
+$("mytable").css("size","landscape");
 var bdhtml;
+$("#mytable thead tr th:nth-child(2)").html("ID");
+$("#mytable thead tr th:nth-child(3)").html("站点");
+$("#mytable thead tr th:nth-child(4)").html("RTU编号");
+$("#mytable thead tr th:nth-child(5)").html("水位");
+$("#mytable thead tr th:nth-child(6)").html("最近5分钟雨量");
+$("#mytable thead tr th:nth-child(7)").html("24小时雨量");
+$("#mytable thead tr th:nth-child(8)").html("流量");
+$("#mytable thead tr th:nth-child(9)").html("水温");
+$("#mytable thead tr th:nth-child(10)").html("电压");
+$("#mytable thead tr th:nth-child(11)").html("记录时间");
+$("#mytable tbody tr td:nth-child(12)").remove();
+$("#mytable thead tr th:nth-child(12)").remove();
+$(".mytitle").html("数据分析");
+$(".mytitle").css({"text-align":"center","font-size":"24pt"})
+//var hr=$("#mytabl thead tr th").find("a").attr("href","");
+var hr=$("a").remove();
 bdhtml=window.document.body.innerHTML;
 sprnstr="<!--startprint-->";
 eprnstr="<!--endprint-->";
@@ -59,6 +75,7 @@ window.print();
 
 </script>
     <p>
+<!--<object classid="clsid:8856f961-340a-11d0-a96b-00c04fd705a2" height=0 id=webbrowser width=0></object>-->
          <?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','id'=>$rtutablename]);?>
          <?= Html::dropDownList('rtuname', $rtutablename,ArrayHelper::map($data,'sitenumber',
                'sitenumber'),['onchange'=>'this.form.submit()' ,'prompt'=>'请选择:rtu表','style'=>'width:120px']); ?>
@@ -71,6 +88,9 @@ window.print();
           <?= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success']) ?>
       </div>
     </p>
+
+
+<div id="mytable">
 <!--startprint-->  
      
         <!--= Html::a('数据分析', ['alldataanalysis','id' =>$rtutablename], ['class' => 'btn btn-success'])-->
@@ -87,7 +107,7 @@ window.print();
          --> 
 
 
-
+<div class="mytitle"></div>
 <?=GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -111,4 +131,5 @@ window.print();
         ],
     ]); ?>
 <!--endprint-->
+</div>
 </div>

@@ -46,24 +46,6 @@ use miloschuman\highcharts\Highcharts;
           echo var_dump($wtrows);
           // echo var_dump($rfrows);
         */
-//echo Highmaps::widget([
-//'options'=>[
-//'chart'=>[],
-//'mapNavigation'=>['enabled'=>'ture'],
-//'title'=>['text'=>'地图'],
-//'subtitle'=>['text'=>'临时数据'],
-//'series'=>[[
-//'name'=>['省份'],
-//'mapData'=>['Hihtcharts.maps'=>'countries/cn/custom/cn-all-sar-taiwan'],
-//'joinBy'=>['hc-key'],
-//'data'=>['hc-key'=>'cn-z','value'=>'22'],
-//'dataLabels'=>['enabled'=>'true','crop'=>'false','overflow'=>'none'],
-//],
-//],
-//'credits'=>['text'=>'地图','href'=>'http://daxueba.net'],
-//],
-//]),
-
  echo Highcharts::widget([
    'options' => [
       'title' => ['text' => '数据分析'],
@@ -98,15 +80,15 @@ use miloschuman\highcharts\Highcharts;
           ]
        ],
       'series' => [
-    //     ['name' => 'Jane', 'data' => [1.2, 0.3, 4.4,2.4,5.7,5.3,7.4,8.5]],
+   //      ['name' => 'Jane', 'data' => [1.2, 0.3, 4.4,2.4,5.7,5.3,7.4,8.5]],
     //     ['name' => 'John', 'data' => [5, 7, 3]]
-    //     ['name' => 'isd', 'data' =>$idrows],      // $jans],
-   
-           ['name' => '水位(m)', 'data' =>$wtrows],      // $john]             
-           ['name' => '最近5分钟雨量(mm)', 'data' =>$rfrows],      // $john]
-           ['name' => '水温(C)', 'data' =>$wtmprows],      // $john]
+  
+  //        ['name' => 'isd', 'data' =>$idrows],      // $jans],
+           ['name' => '水位', 'data' =>$wtrows],      // $john]
+             
+           ['name' => '24小时雨量', 'data' =>$rfrows],      // $john]
+           ['name' => '水温', 'data' =>$wtmprows],      // $john]
       ]
    ]
-]);
- 
+]); 
 ?>
