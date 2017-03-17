@@ -66,66 +66,35 @@ use miloschuman\highcharts\Highcharts;
 //'credits'=>['text'=>'地图','href'=>'http://daxueba.net'],
 //],
 //]),
+
  echo Highcharts::widget([
    'options' => [
-     'chart'=>['type'=>'column'],
+      'chart'=>['type'=>'bar'],
       'title' => ['text' => '数据分析'],
       'xAxis' => [
-           //  'crosshair'=>true,
-            //'datetime' => $daterows,
-                        //'dateTimeLabelFormats' => ['day':%e of %b], 
-        'categories' =>$daterows, 
-       // 显示横向线 
-       // 'scaleShowHorizontalLines'=>true,
-        'dateTimeLabelFormats'=>[ 'day'=>'%m-%d'],
-      //  'plotLines'=>[['color'=>'red','dashStyle'=>'solid','value'=>3,'width'=>2]]
-],
-              //  ],
+       'categories' => ['Apples', 'Bananas', 'Oranges'], 
+       'crosshair'=>true,
+    // datetime 
+         'datetime' => $daterows,
+        ['Apples', 'Bananas', 'Oranges'], //datetime
+        'datetime' =>['02:49:3','03:49:3','04:39:3','05:39:3','06:39:3','07:39:3','09:39:3'], //       
+      //'dateTimeLabelFormats' => ['day':%e of %b], 
+         'type'=>'datetime',
+         'categories' =>$daterows, 
+        'datetime'=> ['02:49:3','03:49:3','04:39:3','05:39:3','06:39:3','07:39:3','09:39:3'],
+       //'dateTimeLabelFormats'=>[ day=>[%m-%d]],
+       ],
       'yAxis' => [
-     
-        'plotLines'=>[['color'=>'red','dashStyle'=>'solid','value'=>12,'width'=>2]],
-         'title' => ['text' => '数值范围']
-         // 'plotLines'=>['color'=>'red','value' =>3],
-          //'gridLineWidth'=>0,
-        // 'text'=>'Waterlv',  'labels'=>['formatter'=>function(){  return this.value.toFixed(2);  }  ],  'allowDecimals'=>'true'
+         'title' => ['text' => '数值范围'],
+         'text'=>'Waterlv',  'labels'=>['formatter'=>function(){  return this.value.toFixed(2);  }  ],  'allowDecimals'=>'true'
       ],
-      
-      'plotOptions'=>['column'=>['dataLabels' =>[ 'enabled'=>true ]]],
-      
+       'plotOptions'=>['column'=>['dataLabels' =>[ 'enabled'=>true ]]],
        'series' => [
-//       ['type'=>'pie'],
-       ['name' => '水位(m)', 'data' =>$wtrows],      // $john] 
-           
-
- //      private void addLateline(Chart chart,String strLate)
-  //      {
-  //          StripLine stripline = new StripLine();
-  //          stripline.Interval = 0;
-  //          stripline.IntervalOffset = double.Parse(strLate) * 10;
- //           stripline.StripWidth = 1;
- //           stripline.BackColor = Color.Red;
- //           stripline.BorderDashStyle = ChartDashStyle.Dash;
- //           chart.ChartAreas[0].AxisX.StripLines.Add(stripline);
-  //      }
-                       
+       ['type'=>'bar'],
+       ['name' => '水位(m)', 'data' =>$wtrows],      // $john]             
            ['name' => '最近5分钟雨量(mm)', 'data' =>$rfrows],      // $john]
            ['name' => '水温(C)', 'data' =>$wtmprows],      // $john]
 ]]]);
-//添加预警线
-//<script>
-// private void addLateline(Chart chart,String strLate)
-  //      {
-    //        StripLine stripline = new StripLine();
-      //      stripline.Interval = 0;
-        //    stripline.IntervalOffset = double.Parse(strLate) * 10;
-          //  stripline.StripWidth = 1;
-           // stripline.BackColor = Color.Red;
-           // stripline.BorderDashStyle = ChartDashStyle.Dash;
-           // chart.ChartAreas[0].Axisy.StripLines.Add(stripline)
-      //  }
-//</script>
-
-
 
 /*echo Highcharts::widget([
 'options'=>[

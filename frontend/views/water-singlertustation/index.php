@@ -34,7 +34,7 @@ $("#mytable thead tr th:nth-child(3)").html("站点");
 $("#mytable thead tr th:nth-child(4)").html("RTU编号");
 $("#mytable thead tr th:nth-child(5)").html("水位");
 $("#mytable thead tr th:nth-child(6)").html("最近5分钟雨量");
-$("#mytable thead tr th:nth-child(7)").html("24小时雨量");
+$("#mytable thead tr th:nth-child(7)").html("降雨量");
 $("#mytable thead tr th:nth-child(8)").html("流量");
 $("#mytable thead tr th:nth-child(9)").html("水温");
 $("#mytable thead tr th:nth-child(10)").html("电压");
@@ -51,7 +51,7 @@ eprnstr="<!--endprint-->";
 prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+999);
 prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
 window.document.body.innerHTML=prnhtml;
-window.print();
+window.print();   
 }
 </script>
 <script>

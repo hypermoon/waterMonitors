@@ -28,6 +28,7 @@ class WaterMonitor extends \frontend\core\BaseActiveRecord
         return 'water_monitor';
     }
 
+
     /**
      * @current_temp
      */
@@ -49,9 +50,9 @@ class WaterMonitor extends \frontend\core\BaseActiveRecord
             'individual_monitoring' => Yii::t('app', '监测人'),
             'phone' => Yii::t('app', '联系电话'),
             'current_site' => Yii::t('app', 'RTU编号 ' ),  // '当前站点'),
-            'current_level' => Yii::t('app', '当前水位'),
+            'current_level' => Yii::t('app', '当前水位 | 预警水位'),
             'current_temp' => Yii::t('app', '当前水温'),
-            'rainfall' => Yii::t('app', '24小时雨量'),
+            'rainfall' => Yii::t('app', '3小时雨量'),
             'img1' => Yii::t('app', 'Img1'),
             'img2' => Yii::t('app', 'Img2'),
 			'client_ip' => Yii::t('app', 'IP地址'),

@@ -79,7 +79,7 @@ class WaterSinglertustation extends \frontend\core\BaseActiveRecord
             'date' => '记录时间',
             'bakup1' => 'Bakup1',
             'bakup2' => 'Bakup2',
-            'rainfallmulti' =>'24小时雨量',
+            'rainfallmulti' =>'3小时雨量',
             'waterlvmulti' => 'waterlvmulti',
             'waterflow' => '流量',
             'volte' => '电压',   

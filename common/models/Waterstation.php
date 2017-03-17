@@ -48,7 +48,7 @@ class Waterstation extends \frontend\core\BaseActiveRecord
             'stationame' => '站点名称',
             'fatherpoint' => '手机号',
             'desciber' => '描述',
-            'bakup' => '联系人',
+            'bakup' => '预警水位',
         ];
     }
 }
