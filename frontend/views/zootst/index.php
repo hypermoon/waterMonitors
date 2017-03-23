@@ -9,6 +9,8 @@ use yii\grid\GridView;
 $this->title = 'Zootsts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="zootst-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

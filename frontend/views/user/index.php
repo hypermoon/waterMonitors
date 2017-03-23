@@ -10,6 +10,8 @@ use yii\grid\GridView;
 $this->title ='用户管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <style>
 </style>
 <div class="user-index" style="position:absolute; z-index:1;">

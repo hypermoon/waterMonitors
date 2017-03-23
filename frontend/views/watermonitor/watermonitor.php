@@ -9,6 +9,7 @@ $this->title = '水文监测';
 <head>
 <title><?= Html::encode($this->title) ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <script type="text/javascript">
 	//图片切换
 	function imageSwitcher(id,url){
@@ -23,8 +24,9 @@ $this->title = '水文监测';
 	}
 </script>
 </head>
-
 <body id="page1">
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <?php
 $datas = "";
 foreach ($models as $lists) {

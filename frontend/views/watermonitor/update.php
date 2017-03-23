@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = ['label' => '水文监测', 'url' => ['index']]
 $this->params['breadcrumbs'][] = ['label' => $model->site, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = '修改';
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="water-monitor-update">
     <h1><?= Html::encode($this->title) ?></h1>
 

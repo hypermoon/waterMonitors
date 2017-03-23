@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 use yii\grid\GridView;
+use yii\web\test;
 //namespace yii\Base\Widget;
 //namespace yii\web\Widget;
 /* @var $this yii\web\View */
@@ -13,7 +14,6 @@ use yii\grid\GridView;
 $this->title = 'RTU遥测站历史数据';
 $this->params['breadcrumbs'][] = $this->title;
 
-
   if(!isset($rtutablename))
             $rtutablename = '默认表';
   
@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
      // <?= Html::a('创建记录', ['create'], ['class' => 'btn btn-success']) 
          //>
 ?>
-
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
 <div class="water-singlertustation-index">
     <h2><?= Html::encode($this->title) ?></h2>
 <input type="button" value="打印" onclick="printout()" style="float:right;"/>
@@ -53,7 +53,22 @@ prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
 window.document.body.innerHTML=prnhtml;
 window.print();   
 }
+
 </script>
+
+<?php
+
+$namearray=""; 
+  //$test1 = "111teststring";
+  $mylist="";
+foreach($data as $lists){
+   $mylist .= $lists['stationame']."*";
+  
+  $namearray = explode("*",$mylist);
+  
+}
+   print_r($namearray);
+?>
 <script>
 //window.onload=function(){
 //var id=document.getElementsByTagName("select")[0];
@@ -72,9 +87,49 @@ window.print();
 
 
 //ajax
+//$(function(){
+window.onload=function(){
+//var sel=document.getElementsByTagName("select");
+var sp="<span></span>";
+//$("select  option").append(sp);
 
+//sp.innerHTML=$namearray[]
+
+   // alert ("<php echo $test1 ?>");
+   // alert ("332");
+//for(var i=0;i<sel.length;i++){
+//var sell=sel[i].id='se';
+//var selec=document.getElementById("se");
+//for(var i=1;i<selec.length;i++){
+//var sell1=$(select).attr('id','sele');
+//alert(sell1);
+//var mynumber=document.getElementById("number").innerHTML;
+//var str=<php echo $namearray[2];?>;
+//alert(str);
+var arra=<?php echo json_encode($namearray);?>;
+var array1=eval(arra);
+$("select  option").each(function(index,el){
+$(this).append(sp);
+$(this).find("span").html("&nbsp; &nbsp;"+array1[index-1]);
+})
+//}
+}
+//}
+//})
 </script>
-    <p>
+
+<div id="number">
+<?php
+foreach($data as $list)
+{
+  //echo $list['stationame'];
+}
+
+ //   $test = "teststring";
+?>
+</div>
+
+     <p> 
 <!--<object classid="clsid:8856f961-340a-11d0-a96b-00c04fd705a2" height=0 id=webbrowser width=0></object>-->
          <?=Html::beginForm(['/waterMonitor/water-singlertustation/selectrtu','id'=>$rtutablename]);?>
          <?= Html::dropDownList('rtuname', $rtutablename,ArrayHelper::map($data,'sitenumber',
@@ -132,4 +187,10 @@ window.print();
     ]); ?>
 <!--endprint-->
 </div>
-</div>
+<!--<script>
+function sele(){
+var mynumber=$("#number").val();
+var sel=$(select).attr('id','seleid');
+}
+window.onload=sele
+</script>-->

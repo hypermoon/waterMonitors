@@ -141,7 +141,7 @@ class WaterstationController extends Controller
                                         ")->execute(); 
                     
                   Yii::$app->db->createCommand("
-                  INSERT INTO water_monitor (site,current_site) VALUES ('重庆','$namestr');
+                  INSERT INTO water_monitor (site,current_site) VALUES ('$model->stationame','$namestr');
                                                ")->execute(); 
                   //echo "<script language=\"javascript\">alert(\"321\"); </script>";     
                 }

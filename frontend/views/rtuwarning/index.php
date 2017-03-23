@@ -9,6 +9,8 @@ use yii\grid\GridView;
 $this->title = 'Rtu报警信息';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="rtuwarning-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

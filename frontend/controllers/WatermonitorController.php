@@ -88,9 +88,9 @@ class WatermonitorController extends Controller
                 $varname =  $siteno['sitenumber'];
                 $rtuname = 'rtu_'.$varname;
         
-                Yii::$app->db->createCommand("
-        UPDATE water_monitor SET site =(select state from $rtuname  order by id desc LIMIT 1)where current_site='$varname';
-                                                 ")->execute();
+      //          Yii::$app->db->createCommand("
+      //  UPDATE water_monitor SET site =(select state from $rtuname  order by id desc LIMIT 1)where current_site='$varname';
+        //                                         ")->execute();
         Yii::$app->db->createCommand("
         UPDATE water_monitor SET current_level =(select waterlv from $rtuname order by id desc LIMIT 1)where current_site='$varname';
                                      ")->execute();

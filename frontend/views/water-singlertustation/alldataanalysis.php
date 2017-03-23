@@ -139,6 +139,7 @@ use miloschuman\highcharts\Highcharts;
 //'data'=['hc-key'=>'cn-zj','value'=>'22'],
 ]]) */
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
 
 <head>
 <meta http-equiv='refresh'>

@@ -20,6 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
      // <?= Html::a('创建记录', ['create'], ['class' => 'btn btn-success']) 
          //>
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="water-singlertustation-index">
 
     <h2><?= Html::encode($this->title) ?></h2>

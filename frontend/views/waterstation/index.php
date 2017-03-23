@@ -9,6 +9,8 @@ use yii\grid\GridView;
 $this->title = '站点管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="waterstation-index" style="position:relative;z-index:1; ">
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -10,6 +10,8 @@ $this->title = 'Create Water Singlertustation';
 $this->params['breadcrumbs'][] = ['label' => 'Water Singlertustations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="water-singlertustation-create">
 
     <h1><?= Html::encode($this->title) ?></h1>

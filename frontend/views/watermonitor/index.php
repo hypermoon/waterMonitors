@@ -10,12 +10,20 @@ use yii\grid\GridView;
 $this->title = '水文监测';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
+
 <head>
  <meta http-equiv='refresh' content ="360">
 </head>
+
+
+<script src="../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="water-monitor-index" style="position:absolute;z-index:1;">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 <!-- test -->
 <!--

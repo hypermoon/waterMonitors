@@ -16,6 +16,8 @@ $vals = '0';
    if(!isset($rtutablename))
             $rtutablename = ' ';
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <script type="text/javascript"> 
         // echo "<script language=\"javascript\">alert(\"caomang\");  
          // echo "alert(\'caomang\');";     

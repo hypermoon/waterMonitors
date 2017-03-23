@@ -10,6 +10,8 @@ use yii\grid\GridView;
 $this->title = '召测中,请稍候...';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <script type="text/javascript">
     function delay(a,id){
          a--;

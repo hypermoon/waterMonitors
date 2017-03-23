@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Water Singlertustations', 'url' =>
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
+<script src="../../../../../vendor/yiisoft/yii2/web/test.js"></script>
+
 <div class="water-singlertustation-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
